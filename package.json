@@ -1,0 +1,29 @@
+{
+    "name": "the-passkey-toolkit",
+    "version": "0.1.0",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "build": "tsup"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MilanWhite/the-passkey-toolkit.git"
+    },
+    "keywords": [
+        "passkey",
+        "toolkit"
+    ],
+    "author": "Milan White",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/MilanWhite/the-passkey-toolkit/issues"
+    },
+    "description": "An all-in-one passkey toolkit. The easiest and quickest way to implement passkey authentication into your application.",
+    "homepage": "https://github.com/MilanWhite/the-passkey-toolkit#readme",
+    "devDependencies": {
+        "tsup": "^8.5.0",
+        "typescript": "^5.8.3"
+    }
+}
