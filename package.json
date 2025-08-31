@@ -1,32 +1,55 @@
 {
-    "name": "the-passkey-toolkit",
-    "version": "0.1.0",
-    "main": "./dist/index.js",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
-    "scripts": {
-        "build": "tsup"
+  "name": "the-passkey-toolkit",
+  "version": "0.1.0",
+  "description": "Framework agnostic passkey client helpers made with @simplewebauthn/browser.",
+  "license": "MIT",
+
+  "type": "module",
+  "sideEffects": false,
+
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/MilanWhite/the-passkey-toolkit.git"
+    "./byob": {
+      "import": "./dist/byob/index.js",
+      "require": "./dist/byob/index.cjs"
     },
-    "keywords": [
-        "passkey",
-        "toolkit"
-    ],
-    "author": "Milan White",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/MilanWhite/the-passkey-toolkit/issues"
-    },
-    "description": "An all-in-one passkey toolkit. The easiest and quickest way to implement passkey authentication into your application.",
-    "homepage": "https://github.com/MilanWhite/the-passkey-toolkit#readme",
-    "devDependencies": {
-        "tsup": "^8.5.0",
-        "typescript": "^5.8.3"
-    },
-    "dependencies": {
-        "@simplewebauthn/browser": "^13.1.2"
+    "./package.json": "./package.json"
+  },
+
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "byob": ["dist/byob/index.d.ts"],
+      "*": ["dist/index.d.ts"]
     }
+  },
+
+  "files": ["dist", "README.md", "LICENSE"],
+
+  "scripts": {
+    "build": "tsup src/index.ts src/byob/index.ts --dts --format esm,cjs --clean"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MilanWhite/the-passkey-toolkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MilanWhite/the-passkey-toolkit/issues"
+  },
+  "homepage": "https://github.com/MilanWhite/the-passkey-toolkit#readme",
+
+  "keywords": ["passkey", "toolkit"],
+
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "@simplewebauthn/browser": ">=13.0.0"
+  },
+  "publishConfig": { "access": "public" }
 }
