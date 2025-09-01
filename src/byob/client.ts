@@ -6,6 +6,15 @@ import {
 
 import { regAPI, authAPI } from "./routes";
 
+let BASE_URL = ""; // keep at "" for api to be relative
+
+// sets base url if base url is a specific one
+export function setBaseUrl(url: string) {
+    BASE_URL = (url || "").replace(/\/+$/, ""); // removes trailing slash (if there is one)
+}
+
+const join = (path: string) => `${BASE_URL}${path}`;
+
 let API_KEY: string | null = null;
 let API_KEY_HEADER = "x-api-key";
 
@@ -35,9 +44,8 @@ export async function registerPasskey(
             "Unfortunately, this browser doesn't support WebAuthn."
         );
     }
-
     // request backend for registration options
-    const optRes = await fetch(regAPI.registrationOptions, {
+    const optRes = await fetch(join(regAPI.registrationOptions), {
         method: "POST",
         credentials: "include",
         signal: abortSignal,
@@ -61,7 +69,7 @@ export async function registerPasskey(
     }
 
     // verify with backend
-    const verifyRes = await fetch(regAPI.registrationVerify, {
+    const verifyRes = await fetch(join(regAPI.registrationVerify), {
         method: "POST",
         credentials: "include",
         signal: abortSignal,
@@ -83,7 +91,7 @@ export async function authorizePasskey(
     }
 
     // request authentication options from backend
-    const optsRes = await fetch(authAPI.authOptions, {
+    const optsRes = await fetch(join(authAPI.authOptions), {
         method: "POST",
         credentials: "include",
         signal: abortSignal,
@@ -106,7 +114,7 @@ export async function authorizePasskey(
     }
 
     // verify assertion in backend
-    const verifyRes = await fetch(authAPI.authVerify, {
+    const verifyRes = await fetch(join(authAPI.authVerify), {
         method: "POST",
         credentials: "include",
         signal: abortSignal,

@@ -1,2 +1,1 @@
-export { setAPIKey, registerPasskey, authorizePasskey } from "./client";
-export { setBaseUrl } from "./routes";
+export { setBaseUrl, setAPIKey, registerPasskey, authorizePasskey } from "./client";
