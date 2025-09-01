@@ -15,7 +15,11 @@ A small framework-agnostic package for WebAuthn **passkeys**.
 npm i the-passkey-toolkit @simplewebauthn/browser
 ```
 
+
 ## BYOB (Bring Your Own Backend)
+
+https://github.com/user-attachments/assets/58eec93e-2b55-4274-9750-2e2f1d815932
+
 
 Import from the `/byob`. Works with your API routes that create options and verify credentials (a handled service coming soon).
 
