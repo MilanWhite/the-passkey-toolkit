@@ -2,10 +2,10 @@
 
 A small framework-agnostic package for WebAuthn **passkeys**.
 
-* **BYOB (Bring Your Own Backend)** — available<br>
-  `import { … } from "the-passkey-toolkit/byob"`<br>
-* **Cloud (Managed backend)** — coming soon<br>
-  `import { … } from "the-passkey-toolkit/cloud"`
+-   **BYOB (Bring Your Own Backend)** — available<br>
+    `import { … } from "the-passkey-toolkit/byob"`<br>
+-   **Cloud (Managed backend)** — coming soon<br>
+    `import { … } from "the-passkey-toolkit/cloud"`
 
 ---
 
@@ -17,14 +17,16 @@ npm i the-passkey-toolkit @simplewebauthn/browser
 
 ## BYOB (Bring Your Own Backend)
 
+https://github.com/user-attachments/assets/58eec93e-2b55-4274-9750-2e2f1d815932
+
 Import from the `/byob`. Works with your API routes that create options and verify credentials (a handled service coming soon).
 
 ```ts
 import {
-  setBaseUrl,          // optional: set if your API is on a different origin
-  setAPIKey,           // optional: adds API header to every request (extra added security)
-  registerPasskey,     // create new passkey
-  authorizePasskey,    // sign in with existing passkey
+    setBaseUrl, // optional: set if your API is on a different origin
+    setAPIKey, // optional: adds API header to every request (extra added security)
+    registerPasskey, // create new passkey
+    authorizePasskey, // sign in with existing passkey
 } from "the-passkey-toolkit/byob";
 ```
 
@@ -37,7 +39,7 @@ setBaseUrl("https://api.myapp.com"); // if your have a different origin
 
 const ok = await registerPasskey("alice@example.com", "Alice");
 if (!ok) {
-  // registration failed for whatever reason
+    // registration failed for whatever reason
 }
 ```
 
@@ -78,10 +80,10 @@ A `true` is returned from registerPasskey, and authorizePasskey when your server
 
 Implement these JSON endpoints:
 
-* `POST /api/passkey/registration/options` → `PublicKeyCredentialCreationOptionsJSON`
-* `POST /api/passkey/registration/verify`  → `{ "verified": boolean }`
-* `POST /api/passkey/authentication/options` → `PublicKeyCredentialRequestOptionsJSON`
-* `POST /api/passkey/authentication/verify`  → `{ "verified": boolean }`
+-   `POST /api/passkey/registration/options` → `PublicKeyCredentialCreationOptionsJSON`
+-   `POST /api/passkey/registration/verify` → `{ "verified": boolean }`
+-   `POST /api/passkey/authentication/options` → `PublicKeyCredentialRequestOptionsJSON`
+-   `POST /api/passkey/authentication/verify` → `{ "verified": boolean }`
 
 > The client sends `credentials: "include"`. Configure cookies & CORS accordingly please.
 
